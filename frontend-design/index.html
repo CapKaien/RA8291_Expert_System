@@ -43,7 +43,7 @@
                 <div class="bar bar4"></div>
                 <div class="bar bar5"></div>
             </div>
-            <div class="title-box">{{ question if question else "Result" }}</div>
+            <div class="title-box-left">{{ question if question else "Result" }}</div>
         </div>
 
         <div class="middle-div-container">
@@ -72,7 +72,7 @@
                 <div class="bar bar9"></div>
                 <div class="bar bar10"></div>
             </div>
-            <div class="navigation-box" style="border-radius: 20px 0 0 20px;">
+            <div class="title-box-right" style="border-radius: 20px 0 0 20px;">
                 <form method="POST" action="/reset">
                     <button class="restart-button" type="submit">Restart</button>
                 </form>
