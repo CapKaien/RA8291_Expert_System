@@ -6,7 +6,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
     
@@ -37,17 +37,25 @@
                 <div class="bar bar4"></div>
                 <div class="bar bar5"></div>
             </div>
-            <div class="title-box">Question 1</div><!-- This will be replace by "Question #" or "Result"-->
+            <div class="title-box">{{ question if question else "Result" }}</div>
         </div>
 
         <div class="middle-div-container">
             <div class="question-box">
-                <p>Are you a government employee? Example Question</p><!-- This will be replace on what question is being ask-->
+                <p>{{ question if question else compliance_result }}</p><!-- This displays the question or result -->
             </div>
-                <div class="choices-container">
-                    <button class="no-button">No</button><!-- No button -->
-                    <button class="yes-button">Yes</button><!-- Yes button -->
-                </div>
+            <div class="choices-container">
+                <!-- Yes and No buttons -->
+                <form method="POST" action="/decision">
+                    <input type="hidden" name="response" value="yes">
+                    <button class="yes-button" type="submit">Yes</button>
+                </form>
+                
+                <form method="POST" action="/decision">
+                    <input type="hidden" name="response" value="no">
+                    <button class="no-button" type="submit">No</button>
+                </form>
+            </div>
         </div>
 
         <div class="right-div-container">
@@ -59,8 +67,9 @@
                 <div class="bar bar10"></div>
             </div>
             <div class="navigation-box">
-                <button class="back-button">Back</button><!-- Back button -->
-                <button class="restart-button">Restart</button><!-- Restart button -->
+                <form method="POST" action="/reset">
+                    <button class="restart-button" type="submit">Restart</button>
+                </form>
             </div>
         </div>
     </div>

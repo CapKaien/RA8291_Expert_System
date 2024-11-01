@@ -60,7 +60,6 @@ def decision():
 
     return render_template('index.html', question=question)
 
-
 @app.route('/reset', methods=['POST'])
 def reset():
     tree_data = session.get('tree')
@@ -78,7 +77,7 @@ def reset():
             tree.step_function = tree.choose_topic  # Proceed to choose topic
             question = tree.choose_topic()  # Call choose_topic function
         else:
-            return render_template('index.html', message="Thanks for using our RA 8291 Compliance Checker. Remember that this does not constitute as legal advice")
+            return render_template('index.html', message="Thanks for using our RA 8291 Compliance Checker. Remember that this does not constitute legal advice")
 
     # Check if the user wants to inquire again after showing compliance results
     elif response.lower() == 'another_inquiry':
